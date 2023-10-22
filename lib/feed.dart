@@ -43,133 +43,134 @@ class Feed extends StatelessWidget {
             },
             body: TabBarView(
               children: [
-                Container(
-                  color: Colors.white,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.all(10.0),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage(app.user.profileImageURL),
+                ListView.builder(
+                  itemCount: app.tweets.length,
+                  itemBuilder: (context, index){
+                  return Container(
+                    color: Colors.white,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(10.0),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(app.tweets[index].avatar),
+                          ),
                         ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(right: 5.0),
-                                  child: Text(
-                                    app.tweets[0].displayName,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 5.0),
+                                    child: Text(
+                                      app.tweets[index].displayName,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  '@' + app.tweets[0].username + ' ' + app.tweets[0].timeAgo,
-                                  style: TextStyle(
-                                    color: Colors.grey,
+                                  Text(
+                                    '@' + app.tweets[index].username + ' · ' + app.tweets[0].timeAgo,
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
-                                Spacer(),
-                                IconButton(
-                                  icon: Icon(
-                                    CupertinoIcons.down_arrow,
-                                    size: 14.0,
-                                    color: Colors.grey,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ],
-                            ),
-                            Text(
-                              app.tweets[0].text,
-                              overflow: TextOverflow.clip,
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(top: 10.0, right: 20.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.comment_outlined,
-                                        size: 16.0,
-                                        color: Colors.black45,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(6.0),
-                                        child: Text(
-                                          app.tweets[0].comments,
-                                          style: TextStyle(
-                                            color: Colors.black45,
-                                            fontSize: 14.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.recycling_outlined,
-                                        size: 16.0,
-                                        color: Colors.black45,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(6.0),
-                                        child: Text(
-                                          app.tweets[0].retweets,
-                                          style: TextStyle(
-                                            color: Colors.black45,
-                                            fontSize: 14.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.favorite_outline,
-                                        size: 16.0,
-                                        color: Colors.black45,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.all(6.0),
-                                        child: Text(
-                                          app.tweets[0].likes,
-                                          style: TextStyle(
-                                            color: Colors.black45,
-                                            fontSize: 14.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.share,
-                                        size: 16.0,
-                                        color: Colors.black45,
-                                      ),
-                                    ],
+                                  Spacer(),
+                                  IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.down_arrow,
+                                      size: 14.0,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {},
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Text(app.tweets[index].text, overflow: TextOverflow.clip),
+                              Container(
+                                margin: const EdgeInsets.only(top: 10.0, right: 20.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.comment_outlined,
+                                          size: 16.0,
+                                          color: Colors.black45,
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.all(6.0),
+                                          child: Text(
+                                            app.tweets[index].comments,
+                                            style: TextStyle(
+                                              color: Colors.black45,
+                                              fontSize: 14.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.recycling_outlined,
+                                          size: 16.0,
+                                          color: Colors.black45,
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.all(6.0),
+                                          child: Text(
+                                            app.tweets[index].retweets,
+                                            style: TextStyle(
+                                              color: Colors.black45,
+                                              fontSize: 14.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.favorite_outline,
+                                          size: 16.0,
+                                          color: Colors.black45,
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.all(6.0),
+                                          child: Text(
+                                            app.tweets[index].likes,
+                                            style: TextStyle(
+                                              color: Colors.black45,
+                                              fontSize: 14.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.share,
+                                          size: 16.0,
+                                          color: Colors.black45,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
+                  );}
                 ),
                 ListView( // Replace with a scrollable widget (e.g., ListView)
                   children: List.generate(
