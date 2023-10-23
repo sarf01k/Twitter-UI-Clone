@@ -19,14 +19,14 @@ class Notifications extends StatelessWidget {
             floatHeaderSlivers: true,
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
-                const SliverAppBar(
+                SliverAppBar(
                   floating: true,
                   // snap: true,
                   // pinned: true,
                   title: Text('Notifications'),
                   leading: ProfilePic(),
                   actions: [
-                    Icon(Icons.settings_outlined)
+                    Image.asset('assets/icons/settings.png')
                   ],
                   // expandedHeight: 200,
                   bottom: TabBar(
