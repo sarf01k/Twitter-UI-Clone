@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'model/user.dart';
 import 'pfp.dart';
 import 'providers.dart';
 
@@ -14,7 +13,7 @@ class DrawerWidget extends StatelessWidget {
     final app = context.read<App>();
     return Drawer(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
           children: [
             DrawerHeader(
@@ -22,11 +21,11 @@ class DrawerWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ProfilePic(),
-                      Icon(Icons.menu)
+                      const ProfilePic(),
+                      Image.asset('assets/icons/more-circle.png', color: Colors.black)
                     ]
                   ),
                   Container(
@@ -34,39 +33,41 @@ class DrawerWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(app.user.displayName),
-                        Text('@' + app.user.username),
+                        Text('@${app.user.username}'),
                       ],
                     )
                   ),
                   Row(
                     children: [
-                      Text(app.user.followingCount.toString() + ' Following   ' + app.user.followersCount.toString() + ' Followers'),
+                      Text('${app.user.followingCount}'),
+                      Text(' Following   ', style: TextStyle(color: Colors.grey)),
+                      Text('${app.user.followersCount}'),
+                      Text(' Followers', style: TextStyle(color: Colors.grey))
                     ],
                   )
                 ]
               )
             ),
-            const Divider(color: Colors.black, height: 0),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ListView(
                   children:  <Widget>[
-                    const ListTile(leading: Icon(Icons.person_outline), title: Text('Profile')),
-                    const ListTile(leading: Icon(Icons.check), title: Text('Blue')),
-                    const ListTile(leading: Icon(Icons.bookmark_outline), title: Text('Bookmarks')),
-                    const ListTile(leading: Icon(Icons.list_alt), title: Text('Lists')),
-                    const ListTile(leading: Icon(Icons.mic_outlined), title: Text('Spaces')),
-                    const ListTile(leading: Icon(Icons.monetization_on_outlined), title: Text('Monetization')),
+                    drawerTile('assets/icons/profile.png', 'Profile'),
+                    drawerTile('assets/icons/badge.png', 'Blue'),
+                    drawerTile('assets/icons/bookmark.png', 'Bookmarks'),
+                    drawerTile('assets/icons/list.png', 'Lists'),
+                    drawerTile('assets/icons/audio.png', 'Spaces'),
+                    drawerTile('assets/icons/money.png', 'Monetization'),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
-                        child: const Column(
+                        child: Column(
                           children: <Widget>[
-                            Divider(color: Colors.black),
-                            ListTile(leading: Icon(Icons.rocket_launch_outlined),title: Text('For Professionals')),
-                            ListTile(leading: Icon(Icons.settings_outlined),title: Text('Settings')),
-                            ListTile(leading: Icon(Icons.help_outline),title: Text('Help and Feedback'))
+                            const Divider(),
+                            const ListTile(leading: Icon(Icons.rocket_launch_outlined, color: Colors.black),title: Text('For Professionals')),
+                            drawerTile('assets/icons/settings.png', 'Settings'),
+                            const ListTile(leading: Icon(Icons.help_outline, color: Colors.black, size: 25),title: Text('Help and Feedback'))
                           ],
                         )
                       )
@@ -80,4 +81,6 @@ class DrawerWidget extends StatelessWidget {
       ),
     );
   }
+
+  ListTile drawerTile(iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Colors.black), title: Text(title));
 }

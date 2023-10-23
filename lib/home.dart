@@ -3,9 +3,7 @@ import 'package:twitter/search.dart';
 import 'communities.dart';
 import 'feed.dart';
 import 'messages.dart';
-import 'model/user.dart';
 import 'notifications.dart';
-import 'drawer_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -26,9 +24,8 @@ class _HomeState extends State<Home> {
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         backgroundColor: Colors.white,
-        showUnselectedLabels: true,
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.black,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
         selectedFontSize: 14,
         unselectedFontSize: 14,
         unselectedLabelStyle: const TextStyle(
@@ -42,29 +39,22 @@ class _HomeState extends State<Home> {
             _currentIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Hime'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Hime'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Hime'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Hime'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.email),
-            label: 'Hime'
-          )
+        items: [
+          bottomAppBarIcon('assets/icons/home.png', 'Home', 'assets/icons/home-filled.png'),
+          bottomAppBarIcon('assets/icons/search.png', 'Search', 'assets/icons/search-filled.png'),
+          bottomAppBarIcon('assets/icons/communities.png', 'Communities', 'assets/icons/communities-filled.png'),
+          bottomAppBarIcon('assets/icons/notification.png', 'Notifications', 'assets/icons/notification-filled.png'),
+          bottomAppBarIcon('assets/icons/message.png', 'Messages', 'assets/icons/message-filled.png')
         ],
       ),
+    );
+  }
+
+  BottomNavigationBarItem bottomAppBarIcon(iconPath, label, activeIconPath) {
+    return BottomNavigationBarItem(
+      icon: Image.asset(iconPath, scale: 1, color: Colors.black),
+      label: label,
+      activeIcon: Image.asset(activeIconPath, scale: 1, color: Colors.black),
     );
   }
 }
