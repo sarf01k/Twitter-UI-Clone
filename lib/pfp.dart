@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:twitter/model/user.dart';
-
 import 'providers.dart';
 
 class ProfilePic extends StatelessWidget {

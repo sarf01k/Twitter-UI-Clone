@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'providers.dart';
 
@@ -85,7 +86,7 @@ class _TweetCardState extends State<TweetCard> {
                         children: [
                           GestureDetector(
                             child: Image.asset(
-                              'assets/icons/repeat.png',
+                              'assets/icons/retweet.png',
                               scale: 1.5,
                               color: retweeted ? Colors.green : null,
                             ),
@@ -111,8 +112,8 @@ class _TweetCardState extends State<TweetCard> {
                         children: [
                           GestureDetector(
                             child: Image.asset(
-                              liked ? 'assets/icons/heart-filled.png' : 'assets/icons/heart.png',
-                              scale: 1.5,
+                              liked ? 'assets/icons/like_filled.png' : 'assets/icons/like_outlined.png',
+                              scale: liked ? 2.5 : 1.5,
                               color: liked ? Colors.red : null,
                             ),
                             onTap: () {
@@ -133,6 +134,24 @@ class _TweetCardState extends State<TweetCard> {
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/views.png',
+                            scale: 1.5,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(6.0),
+                            child: Text(
+                              app.tweets[widget.index].views,
+                              style: const TextStyle(
+                                color: Colors.black45,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       const Row(
                         children: [
                           Icon(
@@ -141,8 +160,7 @@ class _TweetCardState extends State<TweetCard> {
                             color: Colors.black45,
                           ),
                         ],
-                      ),
-                    ],
+                      ),                    ],
                   ),
                 ),
               ],

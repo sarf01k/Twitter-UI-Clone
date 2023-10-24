@@ -7,6 +7,7 @@ class Tweet {
   final String comments;
   final String retweets;
   final String likes;
+  final String views;
 
   Tweet({
     required this.avatar,
@@ -17,5 +18,6 @@ class Tweet {
     required this.comments,
     required this.retweets,
     required this.likes,
+    required this.views
   });
 }
