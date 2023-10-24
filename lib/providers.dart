@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:twitter/model/notification.dart';
 import 'model/tweet.dart';
 import 'model/user.dart';
+
+enum NotificationType { postLike, repostLike, reply, mention, follow }
 
 class App extends ChangeNotifier {
   User user = User(username: 'sarf01k', displayName: 'isaac sarfo', profileImageURL: 'assets/images/pfp.jpg', followersCount: 54, followingCount: 201);
@@ -16,6 +18,7 @@ class App extends ChangeNotifier {
       comments: '243',
       retweets: '23K',
       likes: '112K',
+      views: '345K'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1364344779685904387/1_8LtlJ2_400x400.jpg',
@@ -26,6 +29,7 @@ class App extends ChangeNotifier {
       comments: '2',
       retweets: '1',
       likes: '6',
+      views: '87',
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/994592419705274369/RLplF55e_400x400.jpg',
@@ -36,6 +40,7 @@ class App extends ChangeNotifier {
       comments: '1.5K',
       retweets: '21K',
       likes: '633K',
+      views: '2.1M'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1699794612284706816/TSeEIXud_400x400.jpg',
@@ -46,6 +51,7 @@ class App extends ChangeNotifier {
       comments: '0',
       retweets: '0',
       likes: '8',
+      views: '112'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1704985558571732992/mXW6pnbI_400x400.jpg',
@@ -56,6 +62,7 @@ class App extends ChangeNotifier {
       comments: '1',
       retweets: '1',
       likes: '3',
+      views: '45'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1620474361336438800/bkZoDziE_400x400.jpg',
@@ -66,6 +73,7 @@ class App extends ChangeNotifier {
       comments: '0',
       retweets: '0',
       likes: '2',
+      views: '16'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1628772053175177217/EGVJXNqO_400x400.jpg',
@@ -76,6 +84,7 @@ class App extends ChangeNotifier {
       comments: '12',
       retweets: '4',
       likes: '23K',
+      views: '31K'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1647987489439637509/ED9VLsDQ_400x400.jpg',
@@ -86,6 +95,7 @@ class App extends ChangeNotifier {
       comments: '0',
       retweets: '1',
       likes: '2',
+      views: '21'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1691458182005346304/3wd43r2y_400x400.jpg',
@@ -96,6 +106,7 @@ class App extends ChangeNotifier {
       comments: '20',
       retweets: '7',
       likes: '893',
+      views: '1.2K'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/728198940630384640/-NQMf0qy_400x400.jpg',
@@ -106,6 +117,7 @@ class App extends ChangeNotifier {
       comments: '56',
       retweets: '41',
       likes: '201K',
+      views: '444K'
     ),
     Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1711813252965961728/yoQzC17h_400x400.jpg',
@@ -116,6 +128,15 @@ class App extends ChangeNotifier {
       comments: '5',
       retweets: '2',
       likes: '11',
+      views: '34'
+    )
+  ];
+
+  var notifications = [
+    NotificationModel(
+      type: NotificationType.postLike,
+      content: 'agsg',
+      sender: 'kskd'
     )
   ];
 }

@@ -40,10 +40,10 @@ class _HomeState extends State<Home> {
           });
         },
         items: [
-          bottomAppBarIcon('assets/icons/home.png', 'Home', 'assets/icons/home-filled.png'),
-          bottomAppBarIcon('assets/icons/search.png', 'Search', 'assets/icons/search-filled.png'),
+          bottomAppBarIcon('assets/icons/home_outlined.png', 'Home', 'assets/icons/home_filled.png'),
+          bottomAppBarIcon('assets/icons/search.png', 'Search', 'assets/icons/search.png'),
           bottomAppBarIcon('assets/icons/communities.png', 'Communities', 'assets/icons/communities-filled.png'),
-          bottomAppBarIcon('assets/icons/notification.png', 'Notifications', 'assets/icons/notification-filled.png'),
+          bottomAppBarIcon('assets/icons/notif_outlined.png', 'Notifications', 'assets/icons/notif_filled.png'),
           bottomAppBarIcon('assets/icons/message.png', 'Messages', 'assets/icons/message-filled.png')
         ],
       ),
