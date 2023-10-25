@@ -3,11 +3,17 @@ import 'package:twitter/providers.dart';
 class NotificationModel {
   final NotificationType type;
   final String content;
-  final String sender;
+  final String senderDisplayName;
+  final String senderUserName;
+  final String senderPfp;
+  final bool isVerified;
 
   NotificationModel({
     required this.type,
     required this.content,
-    required this.sender
+    required this.senderDisplayName,
+    required this.senderUserName,
+    required this.senderPfp,
+    required this.isVerified
   });
 }

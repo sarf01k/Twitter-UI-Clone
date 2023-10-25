@@ -61,9 +61,12 @@ class _TweetCardState extends State<TweetCard> {
                     ),
                   ],
                 ),
-                Text(app.tweets[widget.index].text, overflow: TextOverflow.clip),
                 Container(
-                  margin: const EdgeInsets.only(top: 10.0, right: 20.0),
+                  padding: EdgeInsets.only(right: 5),
+                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip)
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5.0, right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
