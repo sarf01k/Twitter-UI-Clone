@@ -10,6 +10,9 @@ class Communities extends StatelessWidget {
       drawer: SafeArea(
         child: DrawerWidget()
       ),
+      body: Center(
+        child: Text('Communities'),
+      )
     );
   }
 }

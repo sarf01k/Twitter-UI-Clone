@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:twitter/drawer_widget.dart';
 import 'package:twitter/notifications.all.dart';
+import 'package:twitter/notifications.mentions.dart';
+import 'package:twitter/notifications.verified.dart';
 import 'package:twitter/pfp.dart';
 
 class Notifications extends StatelessWidget {
@@ -23,7 +25,8 @@ class Notifications extends StatelessWidget {
                   floating: true,
                   // snap: true,
                   // pinned: true,
-                  title: const Text('Notifications'),
+                  title: const Text('Notifications', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  centerTitle: true,
                   leading: const ProfilePic(),
                   actions: [
                     Image.asset('assets/icons/settings.png')
@@ -42,21 +45,11 @@ class Notifications extends StatelessWidget {
                 ),
               ];
             },
-            body: TabBarView(
+            body: const TabBarView(
               children: [
                 AllNotifications(),
-                ListView( // Replace with a scrollable widget (e.g., ListView)
-                  children: List.generate(
-                    30, // Adjust the number of items as needed
-                    (index) => ListTile(title: Text('Item $index')),
-                  ),
-                ),
-                ListView( // Replace with a scrollable widget (e.g., ListView)
-                  children: List.generate(
-                    30, // Adjust the number of items as needed
-                    (index) => ListTile(title: Text('Item $index')),
-                  ),
-                )
+                VerifiedNotifications(),
+                MentionNotifications()
               ],
             ),
           )
