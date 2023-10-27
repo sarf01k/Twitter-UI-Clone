@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/search.dart';
+import 'search.dart';
 import 'communities.dart';
 import 'feed.dart';
 import 'messages.dart';

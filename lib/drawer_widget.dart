@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'theme.dart';
 import 'pfp.dart';
 import 'providers.dart';
 
@@ -28,21 +29,19 @@ class DrawerWidget extends StatelessWidget {
                       Image.asset('assets/icons/more-circle.png', color: Colors.black)
                     ]
                   ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(app.user.displayName),
-                        Text('@${app.user.username}'),
-                      ],
-                    )
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(app.user.displayName, style: displayName),
+                      Text('@${app.user.username}', style: userName),
+                    ],
                   ),
                   Row(
                     children: [
-                      Text('${app.user.followingCount}'),
-                      Text(' Following   ', style: TextStyle(color: Colors.grey)),
-                      Text('${app.user.followersCount}'),
-                      Text(' Followers', style: TextStyle(color: Colors.grey))
+                      Text('${app.user.followingCount}', style: followCount),
+                      const Text(' Following   ', style: follow),
+                      Text('${app.user.followersCount}', style: followCount),
+                      const Text(' Followers', style: follow)
                     ],
                   )
                 ]
@@ -58,18 +57,16 @@ class DrawerWidget extends StatelessWidget {
                     drawerTile('assets/icons/bookmark.png', 'Bookmarks'),
                     drawerTile('assets/icons/list.png', 'Lists'),
                     drawerTile('assets/icons/audio.png', 'Spaces'),
-                    drawerTile('assets/icons/money.png', 'Monetization'),
+                    drawerTile('assets/icons/money.png', 'Monetisation'),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
-                        child: Column(
-                          children: <Widget>[
-                            const Divider(),
-                            const ListTile(leading: Icon(Icons.rocket_launch_outlined, color: Colors.black),title: Text('For Professionals')),
-                            drawerTile('assets/icons/settings.png', 'Settings'),
-                            const ListTile(leading: Icon(Icons.help_outline, color: Colors.black, size: 25),title: Text('Help and Feedback'))
-                          ],
-                        )
+                      child: Column(
+                        children: <Widget>[
+                          const Divider(),
+                          const ListTile(leading: Icon(Icons.rocket_launch_outlined, color: Colors.black),title: Text('For Professionals', style: drawerTitle)),
+                          drawerTile('assets/icons/settings.png', 'Settings'),
+                          const ListTile(leading: Icon(Icons.help_outline, color: Colors.black, size: 25),title: Text('Help and Feedback', style: drawerTitle))
+                        ],
                       )
                     )
                   ],
@@ -82,5 +79,5 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  ListTile drawerTile(iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Colors.black), title: Text(title));
+  ListTile drawerTile(iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Colors.black), title: Text(title, style: drawerTitle));
 }

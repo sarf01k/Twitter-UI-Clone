@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/model/notification.dart';
+import 'model/notification.dart';
 import 'model/tweet.dart';
 import 'model/user.dart';
 
@@ -133,6 +133,14 @@ class App extends ChangeNotifier {
   ];
 
   var notifications = [
+    NotificationModel(
+      type: NotificationType.retweet,
+      content: 'abcddefghiklmno',
+      senderDisplayName: 'sika',
+      senderUserName: 'bigger',
+      senderPfp: 'https://pbs.twimg.com/profile_images/1670171417994821632/JIz_3paa_400x400.jpg',
+      isVerified: true
+    ),
     NotificationModel(
       type: NotificationType.postLike,
       content: 'True😂😂',

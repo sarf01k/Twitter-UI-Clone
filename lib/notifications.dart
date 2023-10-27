@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/drawer_widget.dart';
-import 'package:twitter/notifications.all.dart';
-import 'package:twitter/notifications.mentions.dart';
-import 'package:twitter/notifications.verified.dart';
-import 'package:twitter/pfp.dart';
+import 'drawer_widget.dart';
+import 'notifications.all.dart';
+import 'notifications.mentions.dart';
+import 'notifications.verified.dart';
+import 'pfp.dart';
+import 'theme.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({super.key});
@@ -23,17 +24,16 @@ class Notifications extends StatelessWidget {
               return <Widget>[
                 SliverAppBar(
                   floating: true,
-                  // snap: true,
-                  // pinned: true,
-                  title: const Text('Notifications', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                  centerTitle: true,
+                  title: const Text('Notifications', style: screenTitle),
                   leading: const ProfilePic(),
                   actions: [
                     Image.asset('assets/icons/settings.png')
                   ],
-                  // expandedHeight: 200,
                   bottom: const TabBar(
+                    labelStyle: selectedLabel,
+                    unselectedLabelStyle: unselectedLabel,
                     labelColor: Colors.black,
+                    indicatorColor: Color(0xFF1C9BF0),
                     indicatorPadding: EdgeInsets.symmetric(horizontal: 15),
                     indicatorWeight: 3,
                     tabs: [
