@@ -13,6 +13,7 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final app = context.read<App>();
     return Drawer(
+      backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
@@ -26,21 +27,21 @@ class DrawerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const ProfilePic(),
-                      Image.asset('assets/icons/more-circle.png', color: Colors.black)
+                      Image.asset('assets/icons/more-circle.png', color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white)
                     ]
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(app.user.displayName, style: displayName),
+                      Text(app.user.displayName, style: displayNameDark),
                       Text('@${app.user.username}', style: userName),
                     ],
                   ),
                   Row(
                     children: [
-                      Text('${app.user.followingCount}', style: followCount),
+                      Text('${app.user.followingCount}', style: followCountDark),
                       const Text(' Following   ', style: follow),
-                      Text('${app.user.followersCount}', style: followCount),
+                      Text('${app.user.followersCount}', style: followCountDark),
                       const Text(' Followers', style: follow)
                     ],
                   )
@@ -52,20 +53,20 @@ class DrawerWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ListView(
                   children:  <Widget>[
-                    drawerTile('assets/icons/profile.png', 'Profile'),
-                    drawerTile('assets/icons/badge.png', 'Blue'),
-                    drawerTile('assets/icons/bookmark.png', 'Bookmarks'),
-                    drawerTile('assets/icons/list.png', 'Lists'),
-                    drawerTile('assets/icons/audio.png', 'Spaces'),
-                    drawerTile('assets/icons/money.png', 'Monetisation'),
+                    drawerTile(context, 'assets/icons/profile.png', 'Profile'),
+                    drawerTile(context, 'assets/icons/badge.png', 'Blue'),
+                    drawerTile(context, 'assets/icons/bookmark.png', 'Bookmarks'),
+                    drawerTile(context, 'assets/icons/list.png', 'Lists'),
+                    drawerTile(context, 'assets/icons/audio.png', 'Spaces'),
+                    drawerTile(context, 'assets/icons/money.png', 'Monetization'),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Column(
                         children: <Widget>[
                           const Divider(),
-                          const ListTile(leading: Icon(Icons.rocket_launch_outlined, color: Colors.black),title: Text('For Professionals', style: drawerTitle)),
-                          drawerTile('assets/icons/settings.png', 'Settings'),
-                          const ListTile(leading: Icon(Icons.help_outline, color: Colors.black, size: 25),title: Text('Help and Feedback', style: drawerTitle))
+                          drawerTile2(context, 'assets/icons/rocket.png', 'For Professionals'),
+                          drawerTile2(context, 'assets/icons/settings.png', 'Settings and privacy'),
+                          drawerTile2(context, 'assets/icons/question.png', 'Help Centre')
                         ],
                       )
                     )
@@ -79,5 +80,6 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  ListTile drawerTile(iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Colors.black), title: Text(title, style: drawerTitle));
+  ListTile drawerTile(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white), title: Text(title, style: drawerTitleDark));
+  ListTile drawerTile2(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, height: 20), title: Text(title, style: displayNameDark));
 }

@@ -24,19 +24,19 @@ class Notifications extends StatelessWidget {
               return <Widget>[
                 SliverAppBar(
                   floating: true,
-                  title: const Text('Notifications', style: screenTitle),
+                  title: const Text('Notifications', style: screenTitleDark),
                   leading: const ProfilePic(),
                   actions: [
                     Image.asset('assets/icons/settings.png')
                   ],
-                  bottom: const TabBar(
+                  bottom: TabBar(
                     labelStyle: selectedLabel,
                     unselectedLabelStyle: unselectedLabel,
-                    labelColor: Colors.black,
-                    indicatorColor: Color(0xFF1C9BF0),
-                    indicatorPadding: EdgeInsets.symmetric(horizontal: 15),
+                    labelColor: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
+                    indicatorColor: const Color(0xFF1C9BF0),
+                    indicatorPadding: const EdgeInsets.symmetric(horizontal: 15),
                     indicatorWeight: 3,
-                    tabs: [
+                    tabs: const [
                       Tab(text: 'All'),
                       Tab(text: 'Verified'),
                       Tab(text: 'Mentions')

@@ -24,16 +24,16 @@ class Feed extends StatelessWidget {
               return [
                 SliverAppBar(
                   centerTitle: true,
-                  title: Image.asset('assets/images/x_logo.png', color: Theme.of(context) == darkMode ? Colors.white : Colors.black, height: MediaQuery.of(context).size.height * .04),
+                  title: Image.asset('assets/images/x_logo.png', color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, height: MediaQuery.of(context).size.height * .04),
                   leading: const ProfilePic(),
-                  bottom: const TabBar(
+                  bottom: TabBar(
                     labelStyle: selectedLabel,
                     unselectedLabelStyle: unselectedLabel,
-                    labelColor: Colors.black,
-                    indicatorColor: Color(0xFF1C9BF0),
+                    labelColor: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
+                    indicatorColor: const Color(0xFF1C9BF0),
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorWeight: 3,
-                    tabs: [
+                    tabs: const [
                       Tab(text: 'For You'),
                       Tab(text: 'Following')
                     ],
@@ -68,8 +68,8 @@ class Feed extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
-        backgroundColor: Color(0xFF1C9BF0),
-        child: const Icon(Icons.add),
+        backgroundColor: const Color(0xFF1C9BF0),
+        child: const Icon(Icons.add, color: Colors.white),
         onPressed: () {},
       )
     );
