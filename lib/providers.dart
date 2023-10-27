@@ -6,6 +6,17 @@ import 'model/user.dart';
 enum NotificationType { postLike, repostLike, reply, mention, follow, retweet, newPost }
 
 class App extends ChangeNotifier {
+
+  bool _isDark = false;
+
+  bool get isDark => _isDark;
+
+  // Function to toggle dark mode
+  void toggleDarkMode(bool value) {
+    _isDark = value;
+    notifyListeners();
+  }
+
   User user = User(username: 'sarf01k', displayName: 'isaac sarfo', profileImageURL: 'assets/images/pfp.jpg', followersCount: 54, followingCount: 201);
 
   var tweets = [

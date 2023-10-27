@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Twitter UI Clone',
       theme: lightMode,
       darkTheme: darkMode,
       home: const Home(),
