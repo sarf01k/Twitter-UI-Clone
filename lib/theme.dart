@@ -1,43 +1,25 @@
 import 'package:flutter/material.dart';
 
 ThemeData lightMode = ThemeData(
-  primarySwatch: Colors.blue,  // Twitter's primary blue color
-  hintColor: Colors.blue,     // Also Twitter's blue for accents
-  scaffoldBackgroundColor: Colors.white, // Twitter's background color
+  primarySwatch: Colors.blue,
+  hintColor: Colors.blue,
+  scaffoldBackgroundColor: Colors.white,
 
-  textTheme: TextTheme(
-    bodyText1: TextStyle(
-      fontSize: 16,
-    ),
-    bodyText2: TextStyle(
-      fontSize: 14,
-    ),
-  ),
-
-  appBarTheme: AppBarTheme(
-    color: Colors.white,  // White app bar
-    elevation: 0,        // No elevation
+  appBarTheme: const AppBarTheme(
+    color: Colors.white,
+    elevation: 0,
     titleTextStyle: TextStyle(
       color: Colors.black
     ),
     iconTheme: IconThemeData(
-      color: Colors.black,  // Twitter's blue for icons
+      color: Colors.black,
     ),
   ),
 
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: const TabBarTheme(
     labelColor: Colors.blue,
     unselectedLabelColor: Colors.grey,
   ),
-
-  // elevatedButtonTheme: ElevatedButtonThemeData(
-  //   style: ButtonStyle(
-  //     backgroundColor: MaterialStateProperty.all(Colors.blue),
-  //     textStyle: MaterialStateProperty.all(TextStyle(
-  //       color: Colors.white,
-  //     )),
-  //   ),
-  // ),
 );
 
 ThemeData darkMode = ThemeData(
@@ -47,3 +29,14 @@ ThemeData darkMode = ThemeData(
     accentColor: Colors.blue
   )
 );
+
+const screenTitle = TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w500);
+const selectedLabel = TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600);
+const unselectedLabel = TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w500);
+const displayName = TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600);
+const userName = TextStyle(color: Colors.grey, fontSize: 16);
+const tweetBody = TextStyle(color: Colors.black, fontSize: 16);
+const notifTag = TextStyle(color: Color(0xFF1C9BF0), fontSize: 16);
+const followCount = TextStyle(color: Colors.black, fontSize: 16);
+const follow = TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w400);
+const drawerTitle = TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600);

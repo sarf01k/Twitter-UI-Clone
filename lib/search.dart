@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/drawer_widget.dart';
+import 'drawer_widget.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});

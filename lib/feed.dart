@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:twitter/drawer_widget.dart';
-import 'package:twitter/pfp.dart';
-import 'package:twitter/theme.dart';
+import 'drawer_widget.dart';
+import 'pfp.dart';
+import 'theme.dart';
 import 'providers.dart';
 import 'tweet.card.dart';
 
@@ -21,15 +21,16 @@ class Feed extends StatelessWidget {
           child: NestedScrollView(
             floatHeaderSlivers: true,
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
+              return [
                 SliverAppBar(
-                  // floating: true,
-                  // pinned: true,
                   centerTitle: true,
                   title: Image.asset('assets/images/x_logo.png', color: Theme.of(context) == darkMode ? Colors.white : Colors.black, height: MediaQuery.of(context).size.height * .04),
                   leading: const ProfilePic(),
                   bottom: const TabBar(
+                    labelStyle: selectedLabel,
+                    unselectedLabelStyle: unselectedLabel,
                     labelColor: Colors.black,
+                    indicatorColor: Color(0xFF1C9BF0),
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorWeight: 3,
                     tabs: [
@@ -67,6 +68,7 @@ class Feed extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
+        backgroundColor: Color(0xFF1C9BF0),
         child: const Icon(Icons.add),
         onPressed: () {},
       )

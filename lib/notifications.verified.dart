@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'notifications.all.dart';
+import 'follow_notif.dart';
+import 'like_notif.dart';
+import 'mention_notif.dart';
+import 'new_post_notif.dart';
 import 'providers.dart';
+import 'reply_notif.dart';
+import 'retweet_notif.dart';
 
 class VerifiedNotifications extends StatelessWidget {
   const VerifiedNotifications({super.key});
@@ -25,11 +30,11 @@ class VerifiedNotifications extends StatelessWidget {
         } else if (app.notifications[index].type == NotificationType.newPost && app.notifications[index].isVerified) {
           return NewPostNotification(app: app, index: index);
         } else {
-          return SizedBox.shrink();
+          return const SizedBox.shrink();
         }
       },
       separatorBuilder: (context, index) {
-          return app.notifications[index].isVerified ? const Divider() : SizedBox.shrink();
+          return app.notifications[index].isVerified ? const Divider() : const SizedBox.shrink();
       },
     );
   }

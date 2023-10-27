@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:twitter/home.dart';
-import 'package:twitter/theme.dart';
+import 'home.dart';
+import 'theme.dart';
 import 'providers.dart';
 
 void main() {

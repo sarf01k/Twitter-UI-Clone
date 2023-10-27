@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'theme.dart';
 import 'providers.dart';
+import 'theme.dart';
 
-class TweetCard extends StatefulWidget {
-  const TweetCard({super.key, required this.index});
+class MentionNotification extends StatefulWidget {
+  const MentionNotification({super.key, required this.app, required this.index,});
   final int index;
-
+  final App app;
   @override
-  State<TweetCard> createState() => _TweetCardState();
+  State<MentionNotification> createState() => _MentionNotificationState();
 }
 
-class _TweetCardState extends State<TweetCard> {
+class _MentionNotificationState extends State<MentionNotification> {
   bool liked = false;
   bool retweeted = false;
   @override
   Widget build(BuildContext context) {
-    final app = context.read<App>();
-    return Container(
+    return  Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.all(10.0),
+            margin: const EdgeInsets.only(right: 10),
             child: CircleAvatar(
-              backgroundImage: NetworkImage(app.tweets[widget.index].avatar),
+              backgroundImage: NetworkImage(widget.app.notifications[widget.index].senderPfp)
             ),
           ),
           Expanded(
@@ -36,42 +35,33 @@ class _TweetCardState extends State<TweetCard> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 5.0),
-                      child: Text(
-                        app.tweets[widget.index].displayName,
-                        style: displayName,
-                      ),
+                      child: Text(widget.app.notifications[widget.index].senderDisplayName, style: displayName,),
                     ),
-                    Text(
-                      '@' + app.tweets[widget.index].username + ' · ' + app.tweets[0].timeAgo,
-                      style: userName,
-                    ),
-                    const Spacer(),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.more_vert,
-                        size: 20.0,
-                        color: Colors.grey,
-                      ),
-                      onPressed: () {},
-                    ),
+                    Text('@${widget.app.notifications[widget.index].senderUserName} · ${widget.app.tweets[0].timeAgo}', style: userName,)
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 5),
-                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip, style: tweetBody)
+                  margin: const EdgeInsets.symmetric(vertical: 5.0),
+                  child: Row(
+                    children: [
+                      const Text('Replying to ', style: userName,),
+                      Text('@${widget.app.user.username}', style: notifTag)
+                    ],
+                  ),
                 ),
+                Text(widget.app.notifications[widget.index].content, style: tweetBody),
                 Container(
-                  margin: const EdgeInsets.only(top: 5.0, right: 20.0),
+                  margin: const EdgeInsets.only(top: 10.0, right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
-                          Image.asset('assets/icons/comment.png', scale: 1.2, color: Colors.grey),
+                          Image.asset('assets/icons/comment.png', scale: 1.5, color: Colors.grey),
                           Container(
                             margin: const EdgeInsets.all(6.0),
                             child: Text(
-                              app.tweets[widget.index].comments,
+                              widget.app.tweets[widget.index].comments,
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.0,
@@ -97,7 +87,7 @@ class _TweetCardState extends State<TweetCard> {
                           Container(
                             margin: const EdgeInsets.all(6.0),
                             child: Text(
-                              app.tweets[widget.index].retweets,
+                              widget.app.tweets[widget.index].retweets,
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.0,
@@ -112,7 +102,7 @@ class _TweetCardState extends State<TweetCard> {
                             child: Image.asset(
                               liked ? 'assets/icons/like_filled.png' : 'assets/icons/like_outlined.png',
                               scale: liked ? 2.0 : 1.2,
-                              color: liked ? Color(0xFFF9197F) : Colors.grey,
+                              color: liked ? Colors.red : Colors.grey,
                             ),
                             onTap: () {
                               setState(() {
@@ -123,7 +113,7 @@ class _TweetCardState extends State<TweetCard> {
                           Container(
                             margin: const EdgeInsets.all(6.0),
                             child: Text(
-                              app.tweets[widget.index].likes,
+                              widget.app.tweets[widget.index].likes,
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.0,
@@ -137,11 +127,12 @@ class _TweetCardState extends State<TweetCard> {
                           Image.asset(
                             'assets/icons/views.png',
                             scale: 1.2,
+                            color: Colors.grey
                           ),
                           Container(
                             margin: const EdgeInsets.all(6.0),
                             child: Text(
-                              app.tweets[widget.index].views,
+                              widget.app.tweets[widget.index].views,
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14.0,
@@ -158,7 +149,8 @@ class _TweetCardState extends State<TweetCard> {
                             color: Colors.grey,
                           ),
                         ],
-                      ),                    ],
+                      ),
+                    ],
                   ),
                 ),
               ],
