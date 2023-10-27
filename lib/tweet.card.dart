@@ -18,7 +18,7 @@ class _TweetCardState extends State<TweetCard> {
   Widget build(BuildContext context) {
     final app = context.read<App>();
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -38,11 +38,11 @@ class _TweetCardState extends State<TweetCard> {
                       margin: const EdgeInsets.only(right: 5.0),
                       child: Text(
                         app.tweets[widget.index].displayName,
-                        style: displayName,
+                        style: displayNameDark,
                       ),
                     ),
                     Text(
-                      '@' + app.tweets[widget.index].username + ' · ' + app.tweets[0].timeAgo,
+                      '@${app.tweets[widget.index].username} · ${app.tweets[0].timeAgo}',
                       style: userName,
                     ),
                     const Spacer(),
@@ -57,8 +57,8 @@ class _TweetCardState extends State<TweetCard> {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.only(right: 5),
-                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip, style: tweetBody)
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip, style: tweetBodyDark)
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 5.0, right: 20.0),
@@ -112,7 +112,7 @@ class _TweetCardState extends State<TweetCard> {
                             child: Image.asset(
                               liked ? 'assets/icons/like_filled.png' : 'assets/icons/like_outlined.png',
                               scale: liked ? 2.0 : 1.2,
-                              color: liked ? Color(0xFFF9197F) : Colors.grey,
+                              color: liked ? const Color(0xFFF9197F) : Colors.grey,
                             ),
                             onTap: () {
                               setState(() {

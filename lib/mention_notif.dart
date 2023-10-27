@@ -17,7 +17,7 @@ class _MentionNotificationState extends State<MentionNotification> {
   Widget build(BuildContext context) {
     return  Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,9 +35,9 @@ class _MentionNotificationState extends State<MentionNotification> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 5.0),
-                      child: Text(widget.app.notifications[widget.index].senderDisplayName, style: displayName,),
+                      child: Text(widget.app.notifications[widget.index].senderDisplayName, style: displayNameDark),
                     ),
-                    Text('@${widget.app.notifications[widget.index].senderUserName} · ${widget.app.tweets[0].timeAgo}', style: userName,)
+                    Text('@${widget.app.notifications[widget.index].senderUserName} · ${widget.app.tweets[0].timeAgo}', style: userName)
                   ],
                 ),
                 Container(
@@ -49,7 +49,7 @@ class _MentionNotificationState extends State<MentionNotification> {
                     ],
                   ),
                 ),
-                Text(widget.app.notifications[widget.index].content, style: tweetBody),
+                Text(widget.app.notifications[widget.index].content, style: tweetBodyDark),
                 Container(
                   margin: const EdgeInsets.only(top: 10.0, right: 20.0),
                   child: Row(

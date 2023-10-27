@@ -23,7 +23,7 @@ class _ReplyNotificationState extends State<ReplyNotification> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,7 +43,7 @@ class _ReplyNotificationState extends State<ReplyNotification> {
                       margin: const EdgeInsets.only(right: 5.0),
                       child: Text(
                         widget.app.notifications[widget.index].senderDisplayName,
-                        style: displayName,
+                        style: displayNameDark,
                       ),
                     ),
                     Text(
@@ -61,7 +61,7 @@ class _ReplyNotificationState extends State<ReplyNotification> {
                     ],
                   ),
                 ),
-                Text(widget.app.notifications[widget.index].content, style: tweetBody),
+                Text(widget.app.notifications[widget.index].content, style: tweetBodyDark),
                 Container(
                   margin: const EdgeInsets.only(top: 10.0, right: 20.0),
                   child: Row(

@@ -16,13 +16,13 @@ class LikeNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Image.asset('assets/icons/like_filled.png', scale: 1.5, color: Color(0xFFF9197F)),
+            child: Image.asset('assets/icons/like_filled.png', scale: 1.5, color: const Color(0xFFF9197F)),
           ),
           Expanded(
             child: Column(
@@ -37,9 +37,9 @@ class LikeNotification extends StatelessWidget {
                     children: [
                       Text(
                         app.notifications[index].senderDisplayName,
-                        style: displayName,
+                        style: displayNameDark,
                       ),
-                      const Text(' liked your post', style: tweetBody)
+                      const Text(' liked your post', style: tweetBodyDark)
                     ],
                   ),
                 ),

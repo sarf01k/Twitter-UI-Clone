@@ -6,7 +6,6 @@ import 'mention_notif.dart';
 import 'new_post_notif.dart';
 import 'reply_notif.dart';
 import 'retweet_notif.dart';
-import 'theme.dart';
 import 'providers.dart';
 
 class AllNotifications extends StatelessWidget {

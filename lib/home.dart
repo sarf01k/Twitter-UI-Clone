@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
         showUnselectedLabels: false,
         showSelectedLabels: false,
         selectedFontSize: 14,
@@ -52,9 +52,9 @@ class _HomeState extends State<Home> {
 
   BottomNavigationBarItem bottomAppBarIcon(iconPath, label, activeIconPath) {
     return BottomNavigationBarItem(
-      icon: Image.asset(iconPath, scale: 1, color: Colors.black),
+      icon: Image.asset(iconPath, scale: 1, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white),
       label: label,
-      activeIcon: Image.asset(activeIconPath, scale: 1, color: Colors.black),
+      activeIcon: Image.asset(activeIconPath, scale: 1, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white),
     );
   }
 }

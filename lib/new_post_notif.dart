@@ -17,7 +17,7 @@ class NewPostNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,11 +37,11 @@ class NewPostNotification extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       text: app.notifications[index].content,
-                      style: tweetBody,
+                      style: tweetBodyDark,
                       children: [
                         TextSpan(
                           text: ' ${app.notifications[index].senderDisplayName}',
-                          style: displayName,
+                          style: displayNameDark,
                         )
                       ],
                     ),
