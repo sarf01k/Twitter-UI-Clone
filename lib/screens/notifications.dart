@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'drawer_widget.dart';
+import '../widgets/drawer_widget.dart';
 import 'notifications.all.dart';
 import 'notifications.mentions.dart';
 import 'notifications.verified.dart';
-import 'pfp.dart';
-import 'theme.dart';
+import '../widgets/pfp.dart';
+import '../themes/theme.dart';
 
 class Notifications extends StatelessWidget {
   const Notifications({super.key});

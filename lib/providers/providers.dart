@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'model/notification.model.dart';
-import 'model/tweet.model.dart';
-import 'model/user.model.dart';
+import '../models/notification.model.dart';
+import '../models/tweet.model.dart';
+import '../models/user.model.dart';
 
 enum NotificationType { postLike, repostLike, reply, mention, follow, retweet, newPost }
 

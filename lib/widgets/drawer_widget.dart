@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'theme.dart';
+import '../themes/theme.dart';
 import 'pfp.dart';
-import 'providers.dart';
+import '../providers/providers.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({
@@ -108,7 +108,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       showModalBottomSheet(
                         context: context,
                         backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
                         builder: (context) {
                           return SizedBox(
                             height: MediaQuery.of(context).size.height * .5,
@@ -119,15 +119,15 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                   padding: const EdgeInsets.only(left: 20, top: 30),
                                   child: Text('Dark mode', style: Theme.of(context).brightness == Brightness.light ? drawerTitle : drawerTitleDark),
                                 ),
-                                Divider(thickness: 1),
+                                const Divider(thickness: 1),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 20),
+                                  padding: const EdgeInsets.only(left: 20),
                                   child: Column(
                                     children: [
                                       bottomSheetTile(context, themeProvider, 'Off', false),
                                       bottomSheetTile(context, themeProvider, 'On', true),
                                       ListTile(
-                                        title: Text('dev', style: Theme.of(context).brightness == Brightness.light ? TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
+                                        title: Text('Use device settings', style: Theme.of(context).brightness == Brightness.light ? const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
                                         trailing: Radio(
                                           activeColor: Colors.blue,
                                           value: true,
@@ -143,9 +143,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                     ],
                                   ),
                                 ),
-                                Divider(thickness: 1),
+                                const Divider(thickness: 1),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 20),
+                                  padding: const EdgeInsets.only(left: 20),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
@@ -161,7 +161,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         }
                       );
                     },
-                    icon: Theme.of(context).brightness == Brightness.light ? Icon(Icons.light_mode_outlined, color: Colors.black) : Icon(Icons.dark_mode_outlined, color: Colors.white),
+                    icon: Theme.of(context).brightness == Brightness.light ? const Icon(Icons.light_mode_outlined, color: Colors.black) : const Icon(Icons.dark_mode_outlined, color: Colors.white),
                   ),
                 ]
               )
@@ -174,7 +174,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
   ListTile bottomSheetTile(BuildContext context, App themeProvider, String title, isActive) {
     return ListTile(
-      title: Text(title, style: Theme.of(context).brightness == Brightness.light ? TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
+      title: Text(title, style: Theme.of(context).brightness == Brightness.light ? const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
       trailing: Radio(
         activeColor: Colors.blue,
         value: isActive,

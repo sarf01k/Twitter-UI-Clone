@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'providers.dart';
-import 'theme.dart';
+import '../providers/providers.dart';
+import '../themes/theme.dart';
 
 class FollowNotification extends StatelessWidget {
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'follow_notif.dart';
-import 'like_notif.dart';
-import 'mention_notif.dart';
-import 'new_post_notif.dart';
-import 'reply_notif.dart';
-import 'retweet_notif.dart';
-import 'providers.dart';
+import '../widgets/follow_notif.dart';
+import '../widgets/like_notif.dart';
+import '../widgets/mention_notif.dart';
+import '../widgets/new_post_notif.dart';
+import '../widgets/reply_notif.dart';
+import '../widgets/retweet_notif.dart';
+import '../providers/providers.dart';
 
 class AllNotifications extends StatelessWidget {
   const AllNotifications({super.key});
