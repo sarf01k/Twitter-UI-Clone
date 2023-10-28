@@ -18,6 +18,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   Widget build(BuildContext context) {
     final app = context.read<App>();
     final themeProvider = Provider.of<App>(context);
+    final value = themeProvider.isDarkMode;
     return Drawer(
       backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Stack(
@@ -95,27 +96,92 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
               child: Row(
                 children: [
-                  Switch.adaptive(
-                    value: themeProvider.isDarkMode,
-                    onChanged: (value) {
-                      final provider = Provider.of<App>(context, listen: false);
-                      provider.toggleTheme(value);
-                    }
-                  ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     setState(() {
-                  //       isDarkMode,
-                  //     });
-                  //   },
-                  //   icon: Theme.of(context).brightness == Brightness.light ? Icon(Icons.light_mode_outlined, color: Colors.black) : Icon(Icons.dark_mode_outlined, color: Colors.white),
+                  // Switch.adaptive(
+                  //   value: themeProvider.isDarkMode,
+                  //   onChanged: (value) {
+                  //     final provider = Provider.of<App>(context, listen: false);
+                  //     provider.toggleTheme(value);
+                  //   }
                   // ),
-                  // Image.asset('assets/icons/night-mode.png', scale: 1, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white)
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+                        builder: (context) {
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * .5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20, top: 30),
+                                  child: Text('Dark mode', style: Theme.of(context).brightness == Brightness.light ? drawerTitle : drawerTitleDark),
+                                ),
+                                Divider(thickness: 1),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Column(
+                                    children: [
+                                      bottomSheetTile(context, themeProvider, 'Off', false),
+                                      bottomSheetTile(context, themeProvider, 'On', true),
+                                      ListTile(
+                                        title: Text('dev', style: Theme.of(context).brightness == Brightness.light ? TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
+                                        trailing: Radio(
+                                          activeColor: Colors.blue,
+                                          value: true,
+                                          groupValue: themeProvider.isDarkMode,
+                                          onChanged: (value) {
+                                            Brightness platformBrightness = MediaQuery.platformBrightnessOf(context);
+                                            bool isDark = platformBrightness == Brightness.dark;
+
+                                            themeProvider.toggleTheme(isDark);
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Divider(thickness: 1),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Dark theme', style: Theme.of(context).brightness == Brightness.light ? drawerTitle : drawerTitleDark),
+                                      bottomSheetTile(context, themeProvider, 'Dim', true),
+                                      bottomSheetTile(context, themeProvider, 'Lights Out', true)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                      );
+                    },
+                    icon: Theme.of(context).brightness == Brightness.light ? Icon(Icons.light_mode_outlined, color: Colors.black) : Icon(Icons.dark_mode_outlined, color: Colors.white),
+                  ),
                 ]
               )
             ),
           )
         ],
+      ),
+    );
+  }
+
+  ListTile bottomSheetTile(BuildContext context, App themeProvider, String title, isActive) {
+    return ListTile(
+      title: Text(title, style: Theme.of(context).brightness == Brightness.light ? TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w400) : TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400)),
+      trailing: Radio(
+        activeColor: Colors.blue,
+        value: isActive,
+        groupValue: themeProvider.isDarkMode,
+        onChanged: (value) {
+          themeProvider.toggleTheme(!themeProvider.isDarkMode);
+        },
       ),
     );
   }
