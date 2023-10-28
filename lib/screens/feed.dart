@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'drawer_widget.dart';
-import 'pfp.dart';
-import 'theme.dart';
-import 'providers.dart';
-import 'tweet.card.dart';
+import '../widgets/drawer_widget.dart';
+import '../widgets/pfp.dart';
+import '../themes/theme.dart';
+import '../providers/providers.dart';
+import '../widgets/tweet.card.dart';
 
 class Feed extends StatelessWidget {
   const Feed({super.key});

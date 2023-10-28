@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'mention_notif.dart';
-import 'providers.dart';
+import '../widgets/mention_notif.dart';
+import '../providers/providers.dart';
 
 class MentionNotifications extends StatefulWidget {
   const MentionNotifications({super.key});

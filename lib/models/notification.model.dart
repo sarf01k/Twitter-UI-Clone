@@ -1,4 +1,4 @@
-import 'package:twitter/providers.dart';
+import 'package:twitter/providers/providers.dart';
 
 class NotificationModel {
   final NotificationType type;

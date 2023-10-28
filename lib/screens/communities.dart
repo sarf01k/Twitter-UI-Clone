@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:twitter/drawer_widget.dart';
+import 'package:twitter/widgets/drawer_widget.dart';
 
-class Messages extends StatelessWidget {
-  const Messages({super.key});
+class Communities extends StatelessWidget {
+  const Communities({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class Messages extends StatelessWidget {
         child: DrawerWidget()
       ),
       body: Center(
-        child: Text('Messages'),
+        child: Text('Communities'),
       )
     );
   }
