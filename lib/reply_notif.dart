@@ -43,7 +43,7 @@ class _ReplyNotificationState extends State<ReplyNotification> {
                       margin: const EdgeInsets.only(right: 5.0),
                       child: Text(
                         widget.app.notifications[widget.index].senderDisplayName,
-                        style: displayNameDark,
+                        style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark,
                       ),
                     ),
                     Text(
@@ -61,7 +61,7 @@ class _ReplyNotificationState extends State<ReplyNotification> {
                     ],
                   ),
                 ),
-                Text(widget.app.notifications[widget.index].content, style: tweetBodyDark),
+                Text(widget.app.notifications[widget.index].content, style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark),
                 Container(
                   margin: const EdgeInsets.only(top: 10.0, right: 20.0),
                   child: Row(

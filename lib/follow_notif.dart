@@ -37,9 +37,9 @@ class FollowNotification extends StatelessWidget {
                     children: [
                       Text(
                         app.notifications[index].senderDisplayName,
-                        style: displayNameDark,
+                        style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark,
                       ),
-                      Text(' ${app.notifications[index].content}', style: tweetBodyDark)
+                      Text(' ${app.notifications[index].content}', style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark)
                     ],
                   ),
                 )

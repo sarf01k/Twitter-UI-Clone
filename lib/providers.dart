@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'model/notification.dart';
-import 'model/tweet.dart';
-import 'model/user.dart';
+import 'model/notification.model.dart';
+import 'model/tweet.model.dart';
+import 'model/user.model.dart';
 
 enum NotificationType { postLike, repostLike, reply, mention, follow, retweet, newPost }
 
 class App extends ChangeNotifier {
-
-  bool _isDark = false;
-
-  bool get isDark => _isDark;
-
-  // Function to toggle dark mode
-  void toggleDarkMode(bool value) {
-    _isDark = value;
+  ThemeMode themeMode = ThemeMode.light;
+  bool get isDarkMode => themeMode == ThemeMode.dark;
+  void toggleTheme(bool isOn) {
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 

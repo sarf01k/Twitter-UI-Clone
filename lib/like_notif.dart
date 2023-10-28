@@ -37,7 +37,7 @@ class LikeNotification extends StatelessWidget {
                     children: [
                       Text(
                         app.notifications[index].senderDisplayName,
-                        style: displayNameDark,
+                        style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark,
                       ),
                       const Text(' liked your post', style: tweetBodyDark)
                     ],
