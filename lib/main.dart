@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:twitter/theme.dart';
 import 'home.dart';
-import 'theme.dart';
 import 'providers.dart';
 
 void main() {
@@ -17,8 +17,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<App>(context);
     return MaterialApp(
       title: 'Twitter UI Clone',
+      themeMode: themeProvider.themeMode,
       theme: lightMode,
       darkTheme: darkMode,
       home: const Home(),

@@ -17,6 +17,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     final app = context.read<App>();
+    final themeProvider = Provider.of<App>(context);
     return Drawer(
       backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Stack(
@@ -40,15 +41,15 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(app.user.displayName, style: displayNameDark),
+                          Text(app.user.displayName, style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark),
                           Text('@${app.user.username}', style: userName),
                         ],
                       ),
                       Row(
                         children: [
-                          Text('${app.user.followingCount}', style: followCountDark),
+                          Text('${app.user.followingCount}', style: Theme.of(context).brightness == Brightness.light ? followCount : followCountDark),
                           const Text(' Following   ', style: follow),
-                          Text('${app.user.followersCount}', style: followCountDark),
+                          Text('${app.user.followersCount}', style: Theme.of(context).brightness == Brightness.light ? followCount : followCountDark),
                           const Text(' Followers', style: follow)
                         ],
                       )
@@ -94,12 +95,21 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
               child: Row(
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      app.toggleDarkMode(!app.isDark);
-                    },
-                    icon: Theme.of(context).brightness == Brightness.light ? Icon(Icons.light_mode_outlined, color: Colors.black) : Icon(Icons.dark_mode_outlined, color: Colors.white),
+                  Switch.adaptive(
+                    value: themeProvider.isDarkMode,
+                    onChanged: (value) {
+                      final provider = Provider.of<App>(context, listen: false);
+                      provider.toggleTheme(value);
+                    }
                   ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       isDarkMode,
+                  //     });
+                  //   },
+                  //   icon: Theme.of(context).brightness == Brightness.light ? Icon(Icons.light_mode_outlined, color: Colors.black) : Icon(Icons.dark_mode_outlined, color: Colors.white),
+                  // ),
                   // Image.asset('assets/icons/night-mode.png', scale: 1, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white)
                 ]
               )
@@ -110,7 +120,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     );
   }
 
-  ListTile drawerTile(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, scale: 1), title: Text(title, style: drawerTitleDark));
+  ListTile drawerTile(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, scale: 1), title: Text(title, style: Theme.of(context).brightness == Brightness.light ? drawerTitle : drawerTitleDark));
 
-  ListTile drawerTile2(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, scale: 1.3), title: Text(title, style: displayNameDark));
+  ListTile drawerTile2(BuildContext context, iconPath, title) => ListTile(leading: Image.asset(iconPath, color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white, scale: 1.3), title: Text(title, style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark));
 }

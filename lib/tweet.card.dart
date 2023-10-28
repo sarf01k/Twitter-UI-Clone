@@ -38,7 +38,7 @@ class _TweetCardState extends State<TweetCard> {
                       margin: const EdgeInsets.only(right: 5.0),
                       child: Text(
                         app.tweets[widget.index].displayName,
-                        style: displayNameDark,
+                        style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark,
                       ),
                     ),
                     Text(
@@ -58,7 +58,7 @@ class _TweetCardState extends State<TweetCard> {
                 ),
                 Container(
                   padding: const EdgeInsets.only(right: 5),
-                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip, style: tweetBodyDark)
+                  child: Text(app.tweets[widget.index].text, overflow: TextOverflow.clip, style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark)
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 5.0, right: 20.0),

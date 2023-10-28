@@ -36,8 +36,8 @@ class RetweetNotification extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 5.0),
                   child: Row(
                     children: [
-                      Text(app.notifications[index].senderDisplayName, style: displayNameDark),
-                      const Text(' reposted your reply', style: tweetBodyDark)
+                      Text(app.notifications[index].senderDisplayName, style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark),
+                      Text(' reposted your reply', style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark)
                     ],
                   ),
                 ),

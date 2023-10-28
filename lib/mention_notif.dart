@@ -35,7 +35,7 @@ class _MentionNotificationState extends State<MentionNotification> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(right: 5.0),
-                      child: Text(widget.app.notifications[widget.index].senderDisplayName, style: displayNameDark),
+                      child: Text(widget.app.notifications[widget.index].senderDisplayName, style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark),
                     ),
                     Text('@${widget.app.notifications[widget.index].senderUserName} · ${widget.app.tweets[0].timeAgo}', style: userName)
                   ],
@@ -49,7 +49,7 @@ class _MentionNotificationState extends State<MentionNotification> {
                     ],
                   ),
                 ),
-                Text(widget.app.notifications[widget.index].content, style: tweetBodyDark),
+                Text(widget.app.notifications[widget.index].content, style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark),
                 Container(
                   margin: const EdgeInsets.only(top: 10.0, right: 20.0),
                   child: Row(

@@ -37,11 +37,11 @@ class NewPostNotification extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       text: app.notifications[index].content,
-                      style: tweetBodyDark,
+                      style: Theme.of(context).brightness == Brightness.light ? tweetBody : tweetBodyDark,
                       children: [
                         TextSpan(
                           text: ' ${app.notifications[index].senderDisplayName}',
-                          style: displayNameDark,
+                          style: Theme.of(context).brightness == Brightness.light ? displayName : displayNameDark,
                         )
                       ],
                     ),

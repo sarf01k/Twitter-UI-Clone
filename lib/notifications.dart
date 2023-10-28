@@ -24,7 +24,7 @@ class Notifications extends StatelessWidget {
               return <Widget>[
                 SliverAppBar(
                   floating: true,
-                  title: const Text('Notifications', style: screenTitleDark),
+                  title: Text('Notifications', style: Theme.of(context).brightness == Brightness.light ? screenTitle : screenTitleDark),
                   leading: const ProfilePic(),
                   actions: [
                     Image.asset('assets/icons/settings.png')
