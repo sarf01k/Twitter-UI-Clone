@@ -18,7 +18,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   Widget build(BuildContext context) {
     final app = context.read<App>();
     final themeProvider = Provider.of<App>(context);
-    final value = themeProvider.isDarkMode;
     return Drawer(
       backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
       child: Stack(
@@ -96,21 +95,18 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
               child: Row(
                 children: [
-                  // Switch.adaptive(
-                  //   value: themeProvider.isDarkMode,
-                  //   onChanged: (value) {
-                  //     final provider = Provider.of<App>(context, listen: false);
-                  //     provider.toggleTheme(value);
-                  //   }
-                  // ),
                   IconButton(
                     onPressed: () {
                       showModalBottomSheet(
                         context: context,
-                        backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
+                        // backgroundColor: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
                         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
                         builder: (context) {
-                          return SizedBox(
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).brightness == Brightness.light ? Colors.white : Colors.black,
+                              borderRadius: BorderRadiusDirectional.circular(30)
+                            ),
                             height: MediaQuery.of(context).size.height * .5,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +131,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                                           onChanged: (value) {
                                             Brightness platformBrightness = MediaQuery.platformBrightnessOf(context);
                                             bool isDark = platformBrightness == Brightness.dark;
-
                                             themeProvider.toggleTheme(isDark);
                                           },
                                         ),
