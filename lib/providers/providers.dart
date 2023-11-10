@@ -61,7 +61,7 @@ class App extends ChangeNotifier {
       views: '112'
     ),
     Tweet(
-      avatar: 'https://pbs.twimg.com/profile_images/1704985558571732992/mXW6pnbI_400x400.jpg',
+      avatar: 'https://pbs.twimg.com/profile_images/1559337872154677248/338pkYOR_400x400.jpg',
       username: 'hoesmadfbg',
       displayName: 'Selah',
       timeAgo: '2m',
