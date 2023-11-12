@@ -1,16 +1,16 @@
-# twitter
+# X(Twitter) UI Clone
 
-A new Flutter project.
+![App Demo](link_to_demo_gif_or_screenshot.gif)
 
-## Getting Started
+## Overview
 
-This project is a starting point for a Flutter application.
+This Flutter project is a UI clone of the Twitter mobile app.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

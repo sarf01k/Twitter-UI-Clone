@@ -61,17 +61,6 @@ class App extends ChangeNotifier {
       views: '112'
     ),
     Tweet(
-      avatar: 'https://pbs.twimg.com/profile_images/1559337872154677248/338pkYOR_400x400.jpg',
-      username: 'hoesmadfbg',
-      displayName: 'Selah',
-      timeAgo: '2m',
-      text: 'every company in this country is so unserious. telcos, ecg, ghana water, fire service, police, everybody. ah',
-      comments: '1',
-      retweets: '1',
-      likes: '3',
-      views: '45'
-    ),
-    Tweet(
       avatar: 'https://pbs.twimg.com/profile_images/1620474361336438800/bkZoDziE_400x400.jpg',
       username: 'meetwinnerr',
       displayName: 'Winner',
@@ -136,6 +125,17 @@ class App extends ChangeNotifier {
       retweets: '2',
       likes: '11',
       views: '34'
+    ),
+    Tweet(
+      avatar: 'https://pbs.twimg.com/profile_images/1559337872154677248/338pkYOR_400x400.jpg',
+      username: 'hoesmadfbg',
+      displayName: 'Selah',
+      timeAgo: '2m',
+      text: 'every company in this country is so unserious. telcos, ecg, ghana water, fire service, police, everybody. ah',
+      comments: '1',
+      retweets: '1',
+      likes: '3',
+      views: '45'
     )
   ];
 
